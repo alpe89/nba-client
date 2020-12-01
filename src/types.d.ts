@@ -24,4 +24,6 @@ type Team = {
     name: string;
 };
 
-export { Player, Team };
+type RequestState = 'idle' | 'pending';
+
+export { Player, Team, RequestState };
