@@ -1,3 +1,10 @@
+.Layout {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
 .Header {
     background-color: firebrick;
 }
@@ -29,6 +36,28 @@
 
 .Content {
     padding: 4rem;
+}
+
+.Footer {
+    background-color: white;
+    box-shadow: 0px -1px 2px rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Footer > p {
+    padding: 0;
+    margin: 0;
+    margin-right: 1rem;
+}
+
+.Footer svg {
+    transition: color 0.2s linear;
+}
+
+.Footer svg:hover {
+    color: firebrick;
 }
 
 @keyframes spin {

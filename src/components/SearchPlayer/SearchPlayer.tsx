@@ -8,9 +8,7 @@ const { Search } = Input;
 
 const SearchPlayer: React.FC = () => {
     const [searchFor, setSearchFor] = useState<string>('');
-    const [request, players, error, getPlayers] = useApi(
-        'https://www.balldontlie.io/api/v1/players'
-    );
+    const [request, players, error, getPlayers] = useApi();
 
     const handleSearch = (value: string): void => {
         if (value === '') {
@@ -33,33 +31,35 @@ const SearchPlayer: React.FC = () => {
         );
     }, [searchFor, getPlayers]);
 
+    useEffect(() => {
+        if (error === null) return;
+
+        notification.error({
+            message: 'Network Request Error',
+            description: error.message,
+            placement: 'bottomRight',
+            duration: 3,
+        });
+    }, [error]);
+
     return (
         <main>
             <section>
-                <form>
-                    <div>
-                        <label>Search for Players</label>
-                        <Search
-                            placeholder="Enter something like Lebron or Michael Jordan or Shaq"
-                            allowClear
-                            enterButton
-                            size="large"
-                            onSearch={handleSearch}
-                        />
-                    </div>
-                </form>
+                <div>
+                    <label>Search for Players</label>
+                    <Search
+                        placeholder="Enter something like Lebron or Michael Jordan or Shaq"
+                        allowClear
+                        enterButton
+                        size="large"
+                        onSearch={handleSearch}
+                    />
+                </div>
             </section>
             <Divider />
             <section>
                 <Spin spinning={request === 'pending'}>
                     {players && <PlayersList players={players.data} />}
-                    {error &&
-                        notification.error({
-                            message: 'Network Request Error',
-                            description: error.message,
-                            placement: 'bottomRight',
-                            duration: 3,
-                        })}
                 </Spin>
             </section>
         </main>

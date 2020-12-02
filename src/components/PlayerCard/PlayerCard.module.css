@@ -1,0 +1,19 @@
+.Figure {
+    padding: 4px;
+    padding-bottom: 0;
+    background-color: firebrick;
+    border: 1px solid azure;
+    border-radius: 6px;
+}
+
+.CardTitle {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.CardTitle > h1 {
+    padding: 0;
+    margin: 0;
+    margin-left: 1rem;
+}
