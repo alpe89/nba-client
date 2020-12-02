@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Divider } from 'antd';
+import { Layout } from 'antd';
 import { GithubFilled } from '@ant-design/icons';
 import { Switch, Route, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -47,7 +47,11 @@ const App: React.FC = () => {
             </Content>
             <Footer className={css.Footer}>
                 <p>© Alberto Pertusi - 2020</p>
-                <a href="https://github.com/alpe89" target="_blank">
+                <a
+                    href="https://github.com/alpe89"
+                    target="_blank"
+                    rel="noreferrer"
+                >
                     <GithubFilled
                         style={{
                             fontSize: '1.2rem',
