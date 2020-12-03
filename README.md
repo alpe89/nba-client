@@ -1,5 +1,5 @@
 # LEAGUE INSPECTOR
-_Link al deploy:_[Link](https://gray-ocean-0148f5303.azurestaticapps.net)
+_Link al deploy:_ [Link](https://gray-ocean-0148f5303.azurestaticapps.net)
 
 # Indice
 
@@ -13,6 +13,7 @@ _Link al deploy:_[Link](https://gray-ocean-0148f5303.azurestaticapps.net)
 - [Utilizzo di Redux](#utilizzo-di-redux)
 - [Hooks](#hooks)
 - [Custom Types / Interfaces](#custom-types--interfaces)
+- [Testing](#testing)
 - [Improvements](#improvements)
 
 # Specifiche
@@ -52,7 +53,7 @@ La vista principale dell'app consiste fondamentalmente in un input di ricerca di
 
 # Vista Riepilogo del giocatore
 
-La vista di Riepilogo del giocatore semplicemente visualizza i dati provenienti dallo stato mantenuto da Redux a riguardo del giocatore scelto nella vista Home. L'unica aggiunta fatta alla specifica è stato il salvataggio dei loghi delle squadre NBA in immagini situate nella cartella _public/logos_ e che vengono mostrate in base alla squadra di appartenenza a fianco delle generalità dell'atleta.
+La vista di Riepilogo del giocatore semplicemente visualizza i dati provenienti dallo stato mantenuto da Redux a riguardo del giocatore scelto nella vista Home. L'unica aggiunta fatta alla specifica è stato il salvataggio dei loghi delle squadre NBA in immagini situate nella cartella ```public/logos``` e che vengono mostrate in base alla squadra di appartenenza a fianco delle generalità dell'atleta.
 
 
 # Utilizzo di Redux
@@ -62,12 +63,15 @@ Successivamente ho pensato all'idea di salvare nello stato tutti i Team di cui a
 
 # Hooks
 
-Al momento è presente un singolo Hook Custom, esso aiuta ad evitare di riutilizzare la logica dell'estrarre dati da un endpoint fornendo diverse informazioni utili gestendo le problematiche più comuni. Non è sicuramente un Hook pensato per una applicazione che debba andare in produzione mancando in primo luogo di qualsasi tipo di unit test, oltre che a far fronte ad usi specifici (quello specifico di questo progetto), come ad esempio la possibilità di inviare solamente richieste di tipo GET.
+Al momento è presente un singolo Hook Custom, esso aiuta ad evitare di riutilizzare la logica dell'estrarre dati da un endpoint fornendo diverse informazioni utili gestendo le problematiche più comuni. Non è sicuramente un Hook pensato per una applicazione che debba andare in produzione mancando in primo luogo di qualsasi tipo di unit test, oltre che a far fronte ad usi specifici (quello specifico di questo progetto), come ad esempio la possibilità di inviare solamente richieste di tipo ```GET```.
 
 # Custom Types / Interfaces
 
 Al momento ho scelto di rendere con una interfaccia il giocatore (Player) e la squadra (Team). Ci sono nel progetto altre interfacce per Redux o per le props nei vari componenti React, ma questi sono di utilizzo comune in una qualsiasi applicazione scritta con React, Typescript e Redux.
 
+# Testing
+
+Nella branch advanced si può notare il file ```PlayerList.test.tsx```, sono consapevole che sia appena una bozza e pertanto sbagliato in quanto non tiene conto dell'utilizzo di Redux. Non ho il tempo per trovare informazioni a riguardo non avendo mai testato app scritte con Redux. Probabilmente è sufficiente passare come prop al componente la funzione di dispatch invece di usare un Hook all'interno del componente per poterlo poi mockare. Non sono comunque abbastanza esperto in questo ambito per poter mettere in piedi una test suite soddisfacente.
 # Improvements
 
 L'app come già detto è solo un prototipo e sicuramente non è production ready, manca una gestione degli errori derivanti dall'API precisa. Inoltre si potrebbe rendere persistente i dati dei Team salvandoli nel local storage, mettendo come data di scadenza di questi dati una tempo ragionevole (i team non cambiano spesso). Ad esempio una volta caricati in memoria i dati dei Team, questi possono essere scritti nel local storage per una settimana e, ad ogni accesso all'app, questi verrebbero caricati direttamente dal local storage creando una vera e propria cache. Inoltre ci sarebbe molto da migliorare nella composizione dei vari componenti, soprattutto il componente PlayerCard è lungo e complesso; sicuramente in una app che deve andare in produzione si dovrebbe fare del refactoring e separare in più componenti le parti con logica. Visto che la gestione degli errori avviene tramite dei popup, sarebbe il caso di predisporre un componente (o ancor meglio un Hook) da importare e che gestisca in totale autonomia la gestione dell'errore, passando solamente una variabile di stato che possa attivare la visualizzazione del popup.

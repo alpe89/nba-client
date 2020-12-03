@@ -24,7 +24,7 @@ const PlayersList: React.FC<PlayersListProps> = ({
         history.push('/player');
     };
 
-    return (
+    return players.length > 0 ? (
         <List
             grid={{ gutter: 16, xs: 1, sm: cols, md: cols, lg: cols, xl: cols }}
             dataSource={players}
@@ -58,6 +58,8 @@ const PlayersList: React.FC<PlayersListProps> = ({
                 </List.Item>
             )}
         />
+    ) : (
+        <h2>No player was found</h2>
     );
 };
 

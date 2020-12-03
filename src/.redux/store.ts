@@ -2,20 +2,11 @@ import { createSlice, configureStore, PayloadAction } from '@reduxjs/toolkit';
 import { Player } from '../types';
 
 type SelectedPlayer = {
-    selectedPlayer: Player;
+    selectedPlayer: Player | undefined;
 };
 
 const initialState: SelectedPlayer = {
-    selectedPlayer: {
-        id: 0,
-        first_name: 'N/D',
-        last_name: 'N/D',
-        position: '',
-        height_feet: undefined,
-        height_inches: undefined,
-        weight_pounds: undefined,
-        team: undefined,
-    },
+    selectedPlayer: undefined,
 };
 
 export type { SelectedPlayer };
