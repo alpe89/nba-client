@@ -14,6 +14,7 @@ interface Player extends PlayerObjKeys {
 }
 
 type Team = {
+    id: number;
     abbreviation: string;
     city: string;
     conference: 'East' | 'West';

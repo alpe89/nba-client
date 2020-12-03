@@ -9,10 +9,12 @@ import { playerSelected } from '../../.redux/store';
 
 interface PlayersListProps {
     players: Player[];
+    cols?: number;
 }
 
 const PlayersList: React.FC<PlayersListProps> = ({
     players,
+    cols = 4,
 }: PlayersListProps) => {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -24,7 +26,7 @@ const PlayersList: React.FC<PlayersListProps> = ({
 
     return (
         <List
-            grid={{ gutter: 16, column: 4 }}
+            grid={{ gutter: 16, xs: 1, sm: cols, md: cols, lg: cols, xl: cols }}
             dataSource={players}
             renderItem={(player) => (
                 <List.Item
@@ -35,8 +37,8 @@ const PlayersList: React.FC<PlayersListProps> = ({
                         title={player.first_name + ' ' + player.last_name}
                         style={{
                             textAlign: 'center',
-                            minHeight: '170px',
-                            minWidth: '275px',
+                            minHeight: '175px',
+                            minWidth: `${100 / cols}%`,
                         }}
                     >
                         {player.team ? (
