@@ -14,8 +14,19 @@ import Logo from '../../1F3C0.svg';
 
 const { Header, Content, Footer } = Layout;
 
+const dummyPlayer: Player = {
+    id: 0,
+    first_name: 'N/D',
+    last_name: 'N/D',
+    team: undefined,
+    weight_pounds: undefined,
+    height_feet: undefined,
+    height_inches: undefined,
+    position: '',
+};
+
 const App: React.FC = () => {
-    const selectedPlayer = useSelector<SelectedPlayer, Player>(
+    const selectedPlayer = useSelector<SelectedPlayer, Player | undefined>(
         (state) => state.selectedPlayer
     );
 
@@ -39,7 +50,11 @@ const App: React.FC = () => {
                         <SearchPlayer />
                     </Route>
                     <Route path="/player">
-                        <PlayerCard player={selectedPlayer} />
+                        <PlayerCard
+                            player={
+                                !selectedPlayer ? dummyPlayer : selectedPlayer
+                            }
+                        />
                     </Route>
                 </Switch>
             </Content>

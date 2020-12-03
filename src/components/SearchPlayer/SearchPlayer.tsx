@@ -59,7 +59,7 @@ const SearchPlayer: React.FC = () => {
             <Divider />
             <section>
                 <Spin spinning={request === 'pending'}>
-                    {players && <PlayersList players={players.data} />}
+                    <PlayersList players={players ? players.data : []} />
                 </Spin>
             </section>
         </main>
