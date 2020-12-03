@@ -6,6 +6,11 @@
     border-radius: 6px;
 }
 
+.PlayerImage {
+    width: 100%;
+    height: auto;
+}
+
 .CardTitle {
     display: flex;
     justify-content: flex-start;

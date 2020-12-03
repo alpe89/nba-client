@@ -19,8 +19,6 @@ const App: React.FC = () => {
         (state) => state.selectedPlayer
     );
 
-    console.log(selectedPlayer);
-
     return (
         <Layout className={css.Layout}>
             <Header className={css.Header}>
@@ -46,7 +44,7 @@ const App: React.FC = () => {
                 </Switch>
             </Content>
             <Footer className={css.Footer}>
-                <p>© Alberto Pertusi - 2020</p>
+                <p>© Alberto Pertusi - {new Date().getFullYear()}</p>
                 <a
                     href="https://github.com/alpe89"
                     target="_blank"
